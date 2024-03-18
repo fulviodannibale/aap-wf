@@ -1,0 +1,7 @@
+---
+- name: Continue Workflow Example
+  hosts: localhost
+  tasks:
+    - name: Print the variable
+      debug:
+        var: my_var

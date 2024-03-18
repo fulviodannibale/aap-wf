@@ -1,0 +1,8 @@
+---
+- name: Set Stats Example
+  hosts: localhost
+  tasks:
+    - name: Set custom variable
+      set_stats:
+        data:
+          my_var: "Hello from Job Template 1"

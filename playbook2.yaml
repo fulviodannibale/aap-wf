@@ -1,0 +1,15 @@
+---
+- name: Use Variable Example
+  hosts: localhost
+  tasks:
+    - name: Print the variable
+      debug:
+        var: my_var
+    - name: Set custom variable
+      set_stats:
+        data:
+          my_var: "OVERWRITTEN by playbook2!"
+    - name: Set another variable
+      set_stats:
+        data:
+          another_var: "Hello from playbook2"
