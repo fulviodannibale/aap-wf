@@ -1,15 +1,11 @@
----
-- name: Use Variable Example
-  hosts: localhost
-  tasks:
-    - name: Print the variable
-      debug:
-        var: my_var
-    # - name: Set custom variable
-    #   set_stats:
-    #     data:
-    #       my_var: "OVERWRITTEN by playbook2!"
-    - name: Set another variable
-      set_stats:
-        data:
-          another_var: "Hello from playbook2"
+- name: Call servicenow role if change_create_bitbucket fails
+  vars:
+    errorId: "{{ error_code }}"
+    servicenow_ticket_error_message: "Error creating bitbucket repo. Error ID: {{ errorId }}"
+    servicenow_ticket_order_id: "1"
+    servicenow_ticket_service_id: "1"
+    servicenow_ticket_workorder_id: "1"
+    servicenow_ticket_activity_id: "1"
+    servicenow_ticket_rest_url: "http://localhost:3000/rest"
+  include_role:
+    name: isp.servicenow.servicenow_ticket

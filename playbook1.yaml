@@ -1,8 +1,9 @@
 ---
-- name: Set Stats Example
+- name: Playbook using change_create_bitbucket role
   hosts: localhost
+  gather_facts: no
   tasks:
-    - name: Set custom variable
-      set_stats:
-        data:
-          my_var: "Hello from Job Template 1"
+    - name: Execute change_create_bitbucket role
+      block:
+        - include_role:
+            name: isp.change.change_create_bitbucket
