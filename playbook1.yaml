@@ -5,5 +5,10 @@
   tasks:
     - name: Execute change_create_bitbucket role
       block:
-        - include_role:
+        - name: change_create_bitbucket
+          include_role:
             name: isp.change.change_create_bitbucket
+      rescue:
+        - set_stats:
+            data:
+            error_code: "{{ error_code }}"

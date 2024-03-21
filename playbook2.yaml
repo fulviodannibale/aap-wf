@@ -1,11 +1,15 @@
 - name: Call servicenow role if change_create_bitbucket fails
-  vars:
-    errorId: "{{ error_code }}"
-    servicenow_ticket_error_message: "Error creating bitbucket repo. Error ID: {{ errorId }}"
-    servicenow_ticket_order_id: "1"
-    servicenow_ticket_service_id: "1"
-    servicenow_ticket_workorder_id: "1"
-    servicenow_ticket_activity_id: "1"
-    servicenow_ticket_rest_url: "http://localhost:3000/rest"
-  include_role:
-    name: isp.servicenow.servicenow_ticket
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create Servicenow ticket-name
+      vars:
+        errorId: "{{ error_code }}"
+        servicenow_ticket_error_message: "Error creating bitbucket repo. Error ID: {{ errorId }}"
+        servicenow_ticket_order_id: "1"
+        servicenow_ticket_service_id: "1"
+        servicenow_ticket_workorder_id: "1"
+        servicenow_ticket_activity_id: "1"
+        servicenow_ticket_rest_url: "http://localhost:3000/rest"
+      include_role:
+        name: isp.servicenow.servicenow_ticket
